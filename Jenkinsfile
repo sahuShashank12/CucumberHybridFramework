@@ -20,11 +20,11 @@ pipeline
             }
         }
 
-        stage('Deploy') 
+        stage('Report') 
         {
             steps 
             {
-                echo 'Deploy App'
+                echo 'Report App'
             }
         }
     }
@@ -34,7 +34,7 @@ pipeline
 
     	always
     	{
-    		emailext body: 'Summary', subject: 'Pipeline Status', to: 'selenium3bymukesh@gmail.com'
+    		
     	}
 
     }
