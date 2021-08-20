@@ -1,22 +1,19 @@
 pipeline 
 {
     agent any
-
+    
+    tools
+    { 
+        maven 'MAVEN_HOME'
+    }
+    
     stages 
     {
-        stage('Build') 
-        {
-            steps 
-            {
-                echo 'Build App'
-            }
-        }
-
         stage('Test') 
         {
             steps 
             {
-                echo 'Test App'
+                sh 'mvn verify'
             }
         }
 
@@ -24,17 +21,22 @@ pipeline
         {
             steps 
             {
-                echo 'Report App'
+                echo 'Reports will be Generated and Published in Some time'
             }
         }
     }
 
     post
     {
-
-    	always
-    	{
-    		
+        always
+        {
+            publishHTML (target: [
+                allowMissing: false,
+                alwaysLinkToLastBuild: false,
+                keepAll: true,
+                reportDir: 'test-output/SparkReport',
+                reportFiles: 'Index.html',
+                reportName: "Functional Testing Results"
     	}
 
     }
