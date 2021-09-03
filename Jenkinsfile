@@ -13,7 +13,7 @@ pipeline
         {
             steps 
             {
-                sh 'mvn verify'
+                sh 'mvn clean test'
             }
         }
 
@@ -35,7 +35,7 @@ pipeline
                 alwaysLinkToLastBuild: false,
                 keepAll: true,
                 reportDir: 'test-output/SparkReport',
-                reportFiles: 'Index.html',
+                reportFiles: 'Spark.html',
                 reportName: "Functional Testing Results"
     	}
 
